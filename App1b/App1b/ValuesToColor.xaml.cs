@@ -66,7 +66,7 @@ namespace App1b
 
         public Color FourthColor { get; set; } = Color.Black;
 
-        private string DisplayValueValue = "No action executed until now!";
+        private string DisplayValueValue = "No action executed until now!\n";
 
         public string DisplayValue
         {
@@ -100,7 +100,7 @@ namespace App1b
                 count--;
             }
 
-            if (Lists.FirstBandList.Count > firstVal && firstVal >= 0)
+            if (Lists.FirstBandList.Count > firstVal - 1 && firstVal >= 0)
             {
                 FirstColor = Lists.FirstBandList[(int)firstVal - 1];
             }
@@ -129,11 +129,11 @@ namespace App1b
 
             if (FirstColor == null || SecondColor == null || ThirdColor == null)
             {
-                DisplayValue = "Unable to find correct colors!";
+                DisplayValue = "Unable to find correct colors!\n";
             }
             else
             {
-                DisplayValue = "Color 1: " + FirstColor.Color + " Color 2: " + SecondColor.Color + " Color 3: " + ThirdColor.Color;
+                DisplayValue = "Color 1: " + FirstColor.Color + "\nColor 2: " + SecondColor.Color + "\nColor 3: " + ThirdColor.Color + "\n";
             }
 
         }
