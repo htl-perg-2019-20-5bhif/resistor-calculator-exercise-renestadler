@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -49,6 +44,7 @@ namespace App1b
                 OnPropertyChanged(nameof(ThirdColor));
             }
         }
+
         private string FourthColorValue;
 
         public string FourthColor
@@ -84,8 +80,9 @@ namespace App1b
         private void CalculateOhm(object sender, EventArgs e)
         {
             // Here some magic will happen
-            if (FirstColor != null && SecondColor != null && ThirdColor != null && FourthColor != null) {
-                Value = (FirstColor.Value * 10 + SecondColor.Value) * ThirdColor.Value; 
+            if (FirstColor != null && SecondColor != null && ThirdColor != null && FourthColor != null)
+            {
+                Value = (FirstColor.Value * 10 + SecondColor.Value) * ThirdColor.Value;
             }
 
         }

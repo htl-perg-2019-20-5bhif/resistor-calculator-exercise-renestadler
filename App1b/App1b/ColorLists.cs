@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace App1b
 {
@@ -16,7 +15,7 @@ namespace App1b
             new ColorValue { Color="Green", Value=5 },
             new ColorValue { Color="Blue", Value=6},
             new ColorValue { Color="Purple", Value=7 },
-            new ColorValue { Color="Grey", Value=8 },
+            new ColorValue { Color="Gray", Value=8 },
             new ColorValue { Color="White", Value=9 }
         };
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -16,44 +12,128 @@ namespace App1b
         {
             Lists = new ColorLists();
             InitializeComponent();
+            BindingContext = this;
         }
 
         public ColorLists Lists { get; set; }
 
-        public long Value { get; set; }
+        private long ValueValue = 0;
+        public long Value
+        {
+            get => ValueValue;
+            set
+            {
+                ValueValue = value;
+                OnPropertyChanged(nameof(Value));
+            }
+        }
+
+        private ColorValue FirstColorValue;
+
+        public ColorValue FirstColor
+        {
+            get => FirstColorValue;
+            set
+            {
+                this.FirstColorValue = value;
+                OnPropertyChanged(nameof(FirstColor));
+            }
+        }
+
+        private ColorValue SecondColorValue;
+
+        public ColorValue SecondColor
+        {
+            get => SecondColorValue;
+            set
+            {
+                this.SecondColorValue = value;
+                OnPropertyChanged(nameof(SecondColor));
+            }
+        }
+
+        private ColorValue ThirdColorValue;
+
+        public ColorValue ThirdColor
+        {
+            get => ThirdColorValue;
+            set
+            {
+                this.ThirdColorValue = value;
+                OnPropertyChanged(nameof(ThirdColor));
+            }
+        }
+
+        public Color FourthColor { get; set; } = Color.Black;
+
+        private string DisplayValueValue = "No action executed until now!";
+
+        public string DisplayValue
+        {
+            get => DisplayValueValue;
+            set
+            {
+                this.DisplayValueValue = value;
+                OnPropertyChanged(nameof(DisplayValue));
+            }
+        }
+
+
         private void GetColors(object sender, EventArgs e)
         {
             long curValue = Value;
             int count = 0;
             //Count how many zeros are in our Value
-            while (curValue % 10 != 0)
+            while (curValue % 10 == 0)
             {
                 count++;
                 curValue /= 10;
             }
-            ColorValue first = null;
-            ColorValue second = null;
-            ColorValue third = null;
+
             long secondVal = curValue % 10;
             long firstVal = curValue / 10;
 
-            if (Lists.FirstBandList.Count < firstVal)
+            if (curValue < 10)
             {
-                first = Lists.FirstBandList[(int)firstVal];
-            }
-            second = Lists.SecondBandList[(int)secondVal];
-            if (Lists.ThirdBandList.Count < count)
-            {
-                third = Lists.ThirdBandList[count];
+                firstVal = secondVal;
+                secondVal = 0;
+                count--;
             }
 
-            if (first != null && second != null && third != null)
+            if (Lists.FirstBandList.Count > firstVal && firstVal >= 0)
             {
-                
+                FirstColor = Lists.FirstBandList[(int)firstVal - 1];
             }
             else
             {
-                //Display Error
+                FirstColor = null;
+            }
+
+            if (Lists.SecondBandList.Count > secondVal && secondVal >= 0)
+            {
+                SecondColor = Lists.SecondBandList[(int)secondVal];
+            }
+            else
+            {
+                SecondColor = null;
+            }
+
+            if (Lists.ThirdBandList.Count > count && count >= 0)
+            {
+                ThirdColor = Lists.ThirdBandList[count];
+            }
+            else
+            {
+                ThirdColor = null;
+            }
+
+            if (FirstColor == null || SecondColor == null || ThirdColor == null)
+            {
+                DisplayValue = "Unable to find correct colors!";
+            }
+            else
+            {
+                DisplayValue = "Color 1: " + FirstColor.Color + " Color 2: " + SecondColor.Color + " Color 3: " + ThirdColor.Color;
             }
 
         }

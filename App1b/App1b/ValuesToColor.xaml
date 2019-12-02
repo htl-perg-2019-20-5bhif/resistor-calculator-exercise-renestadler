@@ -21,6 +21,8 @@
         <StackLayout>
             <Editor Text="{Binding Path=Value}" FontSize="Header"></Editor>
             <Button Text="Calculate" Clicked="GetColors"></Button>
+            <Label Text="Result:"/>
+            <Label Text="{Binding Path=DisplayValue}"></Label>
             <StackLayout Orientation="Horizontal" Padding="0" Margin="0" Spacing="0">
                 <BoxView Color="Gray" HeightRequest="20" />
                 <BoxView Color="RosyBrown" />
